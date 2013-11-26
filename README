@@ -1,0 +1,23 @@
+Welcome to DragonSlayer
+
+
+DragonSlayer is an initiative of the labict.be group and is meant as a project for students to collaborate on.
+
+
+Goals
+------
+Learn students different aspects of web application development.
+Learn students to collaborate on a single project.
+Learn students to work with git.
+
+
+Collaborating
+--------------
+More info on: https://help.github.com/articles/fork-a-repo
+More info on: https://help.github.com/articles/using-pull-requests
+
+~ Make sure to register an account on github.com.
+~ Next fork the DragonSlayer project from https://github.com/BioBoost/DragonSlayer
+~ Next clone your new forked repository from github "git clone https://github.com/<username>/DragonSlayer.git"
+~ Next add an upstream remote pointing at the original forked repository "git remote add upstream https://github.com/BioBoost/DragonSlayer.git"
+~ Fetch the upstream repository using "git fetch upstream"
