@@ -3,6 +3,7 @@ class Database
 {
     private static $db = NULL;
 
+
 	const DSN = "mysql:host=localhost;port=3306;dbname=dragonslayer";
 	const USERNAME = "root";
 	const PASSWORD = "";
