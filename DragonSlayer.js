@@ -63,6 +63,8 @@ Tile.prototype.toString = function() {
 }
 
 /*
+    @param basetile The tile from which to extend the map. Should at least have a valid id
+    @param level Currently not used
     @param initial Should only be set to true for first tile on load
 */
 function getPartialMapFromServer(basetile, level, initial)
@@ -87,6 +89,12 @@ function getPartialMapFromServer(basetile, level, initial)
     xmlhttp.send();
 }
 
+/*
+    @param xmlhttp The XML HTTP object
+    @param basetile The tile from which to extend the map. Should at least have a valid id
+    @param level Currently not used
+    @param initial Should only be set to true for first tile on load
+*/
 function ajax_ExtendPartialMapFromJson_Callback(xmlhttp, basetile, level, initial)
 {
     console.log("AJAX response: " + xmlhttp.responseText);
@@ -266,7 +274,7 @@ Player.prototype.initialize = function() {
     // Partial map of start location should be loaded
     var locationid = 1;     // TODO: This should be retrieved from server
     this.currentPosition = new Tile(locationid, null, null, null, null, null);
-    getPartialMapFromServer(this.currentPosition, 2, true);
+    getPartialMapFromServer(this.currentPosition, 1, true);
 }
 
 Player.prototype.toString = function() {
@@ -334,7 +342,7 @@ Player.prototype.go = function(to) {
             this.currentPosition = this.currentPosition.north;
 
             // Now we need to get all surrounding tiles of current tile
-            getPartialMapFromServer(this.currentPosition, 2, false);
+            getPartialMapFromServer(this.currentPosition, 1, false);
         }
     }
     else if (to == 'east') {
@@ -343,7 +351,7 @@ Player.prototype.go = function(to) {
             this.currentPosition = this.currentPosition.east;
 
             // Now we need to get all surrounding tiles of current tile
-            getPartialMapFromServer(this.currentPosition, 2, false);
+            getPartialMapFromServer(this.currentPosition, 1, false);
         }
     }
     else if (to == 'south') {
@@ -352,7 +360,7 @@ Player.prototype.go = function(to) {
             this.currentPosition = this.currentPosition.south;
 
             // Now we need to get all surrounding tiles of current tile
-            getPartialMapFromServer(this.currentPosition, 2, false);
+            getPartialMapFromServer(this.currentPosition, 1, false);
         }
     }
     else if (to == 'west') {
@@ -361,7 +369,7 @@ Player.prototype.go = function(to) {
             this.currentPosition = this.currentPosition.west;
 
             // Now we need to get all surrounding tiles of current tile
-            getPartialMapFromServer(this.currentPosition, 2, false);
+            getPartialMapFromServer(this.currentPosition, 1, false);
         }
     }
 
