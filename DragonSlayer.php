@@ -8,7 +8,7 @@
 <script type="text/javascript">
 
 // Create a new player
-var player = new Player("0", "Dronkus The Great");
+var player = new Player("0", "The Greatest");
 player.initialize();
 
 /*
@@ -62,6 +62,9 @@ window.addEventListener("load", registerEvents, false);
     </head>
     <body>
         <div id="content">
+            <div id="tileImage">
+                <img src="">
+            </div>
 
             <div id="playerinfo">
                 <div id="playername">

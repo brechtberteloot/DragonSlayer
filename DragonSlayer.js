@@ -16,7 +16,7 @@ that is not yet populated.
 /*
     Use this to create Tile objects
 */
-function Tile(id, description, north_id, east_id, south_id, west_id)
+function Tile(id, description, north_id, east_id, south_id, west_id,image)
 {
     this.id = id;
     this.description = description;
@@ -35,6 +35,8 @@ function Tile(id, description, north_id, east_id, south_id, west_id)
 
     this.monster = null;
     this.item = null;
+    this.image = null;
+
 }
 
 Tile.prototype.toString = function() {
@@ -122,8 +124,7 @@ function extendPartialMapFromJson(basetile, jsonstring, maxlevel, initial)
         for(var key in newbasetile) {
             basetile[key] = newbasetile[key];
         }
-    }
-    else {      // Player has already been moving in map
+    }    else {      // Player has already been moving in map
         recursiveCreateTiles(1, maxlevel, basetile, tiles_from_json, monsterlist);
     }
 }
@@ -377,11 +378,12 @@ Player.prototype.go = function(to) {
 /*
     Use this to create Monster objects
 */
-function Monster(id, description, location_id)
+function Monster(id, description, location_id, monster_image)
 {
     this.id = id;
     this.description = description;
     this.location_id = location_id;
+    this.monster_image = "/img/monster/DogMonster.jpg.";
 
     // Reference to location
     this.location = null;
@@ -399,7 +401,8 @@ function createMonsterFromObj(obj)
     var newMonster = new Monster(
         obj.id,
         obj.description,
-        obj.location_id
+        obj.location_id,
+
     );
     return newMonster;
 }
