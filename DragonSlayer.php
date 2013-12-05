@@ -68,15 +68,26 @@ window.addEventListener("load", registerEvents, false);
                         document.write(player.name);
                     </script>
                 </div>
+
+                <div id="tileimage">                    
+                </div>
+
             </div>
 
+
             <div id="interaction">
+
+
+
                 <div id="gameinput">
                     <textarea id="txtUserAction" placeholder="... Your action (press enter to execute) ..."></textarea>
-                </div>
+                </div>             
 
                 <div id="gameoutput">
                 </div>
+
+                
+
             </div>
         </div>
     </body>

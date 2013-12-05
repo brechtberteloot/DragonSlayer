@@ -42,8 +42,6 @@ function Tile(id, description, north_id, east_id, south_id, west_id, image)
 Tile.prototype.toString = function() {
     var out = "[" + this.id + "] ";
     out += this.description;
-    //out += "<img src=" + this.image + " alt='image of current tile' >";
-    out += '<img src="' + this.image + '" alt="image of current tile" >'; 
 
     out += "<ul>";
     if (this.north_id != null)
@@ -64,6 +62,11 @@ Tile.prototype.toString = function() {
     }
 
     return out;
+}
+
+Tile.prototype.getImage = function(){
+    imageOut = this.image;
+    return imageOut;
 }
 
 /*
@@ -373,8 +376,28 @@ Player.prototype.go = function(to) {
         return "You cannot go there.";
     }
     else {
-        return "You traveled " + to;
+        
+        var DOM_img = document.createElement("img");
+        DOM_img.src = player.currentPosition.getImage(); 
+
+        // how the image will be displayed
+        DOM_img.style.maxHeight="150px";
+        DOM_img.style.marginTop="5px";
+
+        //delete previous image
+        var tempnode = document.getElementById("tileimage");
+        while(tempnode.firstChild) {
+            tempnode.removeChild(tempnode.firstChild);
+        }
+
+        //place new image in tileimage
+        document.getElementById("tileimage").appendChild(DOM_img);
+
+        return "You traveled " + to
+;
     }
+
+
 }
 
 
@@ -388,14 +411,13 @@ function Monster(id, description, location_id, monster_image)
     this.location_id = location_id;
     // Reference to location
     this.location = null,
-
-    this.monster_image = null;;
+     
+    this.monster_image = monster_image;
 }
 
 Monster.prototype.toString = function() {
     var out = "[" + this.id + "] ";
     out += this.description;
-
     return out;
 }
 
