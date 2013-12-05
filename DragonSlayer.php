@@ -62,10 +62,6 @@ window.addEventListener("load", registerEvents, false);
     </head>
     <body>
         <div id="content">
-            <div id="tileImage">
-                <img src="">
-            </div>
-
             <div id="playerinfo">
                 <div id="playername">
                     <script type="text/javascript">

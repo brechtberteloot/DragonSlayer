@@ -16,7 +16,7 @@ that is not yet populated.
 /*
     Use this to create Tile objects
 */
-function Tile(id, description, north_id, east_id, south_id, west_id,image)
+function Tile(id, description, north_id, east_id, south_id, west_id, image)
 {
     this.id = id;
     this.description = description;
@@ -35,13 +35,15 @@ function Tile(id, description, north_id, east_id, south_id, west_id,image)
 
     this.monster = null;
     this.item = null;
-    this.image = null;
+    this.image = image;
 
 }
 
 Tile.prototype.toString = function() {
     var out = "[" + this.id + "] ";
     out += this.description;
+    //out += "<img src=" + this.image + " alt='image of current tile' >";
+    out += '<img src="' + this.image + '" alt="image of current tile" >'; 
 
     out += "<ul>";
     if (this.north_id != null)
@@ -244,7 +246,8 @@ function createTileFromObj(obj)
         obj.north_id,
         obj.east_id,
         obj.south_id,
-        obj.west_id
+        obj.west_id,
+        obj.image
     );
     return newTile;
 }
@@ -266,7 +269,7 @@ Player.prototype.initialize = function() {
 
     // Partial map of start location should be loaded
     var locationid = 1;     // TODO: This should be retrieved from server
-    this.currentPosition = new Tile(locationid, null, null, null, null, null);
+    this.currentPosition = new Tile(locationid, null, null, null, null, null,null);
     getPartialMapFromServer(this.currentPosition, 2, true);
 }
 
@@ -383,10 +386,10 @@ function Monster(id, description, location_id, monster_image)
     this.id = id;
     this.description = description;
     this.location_id = location_id;
-    this.monster_image = "/img/monster/DogMonster.jpg.";
-
     // Reference to location
-    this.location = null;
+    this.location = null,
+
+    this.monster_image = null;;
 }
 
 Monster.prototype.toString = function() {
@@ -402,7 +405,7 @@ function createMonsterFromObj(obj)
         obj.id,
         obj.description,
         obj.location_id,
-
+        obj.monster_image
     );
     return newMonster;
 }
