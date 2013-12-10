@@ -8,7 +8,7 @@
 <script type="text/javascript">
 
 // Create a new player
-var player = new Player("0", "Dronkus The Great");
+var player = new Player("0", "The Greatest");
 player.initialize();
 
 /*
@@ -19,7 +19,8 @@ function toGameOutput(message)
 {
     // Create new element node
     var newNode = document.createElement("p");
-    newNode.setAttribute("class", "boxedshadow");
+    // newNode.setAttribute("class", "boxedshadow");
+    newNode.setAttribute("class", "outputstyle")
     newNode.innerHTML = message;
 
     //Add element to dynamic content node
@@ -62,18 +63,21 @@ window.addEventListener("load", registerEvents, false);
     </head>
     <body>
         <div id="content">
-
             <div id="playerinfo">
                 <div id="playername">
                     <script type="text/javascript">
                         document.write(player.name);
                     </script>
                 </div>
+
+                <div id="tileimage">                    
+                </div>
+
             </div>
 
             <div id="interaction">
                 <div id="gameinput">
-                    <textarea id="txtUserAction" placeholder="... Your action (press enter to execute) ..."></textarea>
+                    <textarea id="txtUserAction" placeholder="Enter your action here"></textarea>
                 </div>
 
                 <div id="gameoutput">
