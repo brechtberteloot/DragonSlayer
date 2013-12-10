@@ -40,18 +40,20 @@ function ModifyMonstersTable()
 	$records = array(
 		array(
 				":id" => 102,
-                ":description" => "A huge flaming dog of hell of at least 2 centimetr...",
-                ":tiles_id" => 2
+                ":description" => "A huge flaming dog of hell of at least 2 centimetres",
+                ":tiles_id" => 2,
+                ":monster_image" => NULL
 		),
 		array(
 				":id" => 103,
                 ":description" => "A small yellow rat.",
-                ":tiles_id" => 3
+                ":tiles_id" => 3,
+                ":monster_image" => NULL
 		)
 	);
 
-	$insert = "INSERT INTO monsters (id, description, tiles_id )
-	                  VALUES (:id, :description, :tiles_id )";
+	$insert = "INSERT INTO monsters (id, description, tiles_id, monster_image )
+	                  VALUES (:id, :description, :tiles_id, :monster_image )";
 
 	$pdostat = Database::getInstance()->prepare($insert);
 
@@ -110,7 +112,8 @@ function ModifyTilesTable()
                 ":tiles_id_north" => 20,
                 ":tiles_id_east" => 2,
                 ":tiles_id_south" => 21,
-                ":tiles_id_west" => 22
+                ":tiles_id_west" => 22,
+                ":tile_image" => NULL
 		),
 		array(
 				":id" => 2,
@@ -118,7 +121,8 @@ function ModifyTilesTable()
                 ":tiles_id_north" => NULL,
                 ":tiles_id_east" => 3,
                 ":tiles_id_south" => NULL,
-                ":tiles_id_west" => 1
+                ":tiles_id_west" => 1,
+                ":tile_image" => NULL
 		),
 		array(
 				":id" => 3,
@@ -126,7 +130,8 @@ function ModifyTilesTable()
                 ":tiles_id_north" => NULL,
                 ":tiles_id_east" => NULL,
                 ":tiles_id_south" => NULL,
-                ":tiles_id_west" => 2
+                ":tiles_id_west" => 2,
+                ":tile_image" => NULL
 		),
 		array(
 				":id" => 20,
@@ -134,7 +139,8 @@ function ModifyTilesTable()
                 ":tiles_id_north" => NULL,
                 ":tiles_id_east" => NULL,
                 ":tiles_id_south" => 1,
-                ":tiles_id_west" => NULL
+                ":tiles_id_west" => NULL,
+                ":tile_image" => NULL
 		),
 		array(
 				":id" => 21,
@@ -142,20 +148,22 @@ function ModifyTilesTable()
                 ":tiles_id_north" => 1,
                 ":tiles_id_east" => NULL,
                 ":tiles_id_south" => NULL,
-                ":tiles_id_west" => NULL
+                ":tiles_id_west" => NULL,
+                ":tile_image" => NULL
 		),
 		array(
 				":id" => 22,
-                ":description" => "You face a wall of rock no man can climb. test",
+                ":description" => "You face a wall of rock no man can climb.",
                 ":tiles_id_north" => NULL,
                 ":tiles_id_east" => 1,
                 ":tiles_id_south" => NULL,
-                ":tiles_id_west" => NULL
+                ":tiles_id_west" => NULL,
+                ":tile_image" => NULL
 		)
 	);
 
-	$insert = "INSERT INTO tiles (id, description, tiles_id_north, tiles_id_east, tiles_id_south, tiles_id_west )
-	                  VALUES (:id, :description, :tiles_id_north, :tiles_id_east, :tiles_id_south, :tiles_id_west )";
+	$insert = "INSERT INTO tiles (id, description, tiles_id_north, tiles_id_east, tiles_id_south, tiles_id_west, tile_image )
+	                  VALUES (:id, :description, :tiles_id_north, :tiles_id_east, :tiles_id_south, :tiles_id_west, :tile_image )";
 
 	$pdostat = Database::getInstance()->prepare($insert);
 
