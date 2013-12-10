@@ -36,7 +36,6 @@ function Tile(id, description, north_id, east_id, south_id, west_id, image)
     this.monster = null;
     this.item = null;
     this.image = image;
-
 }
 
 Tile.prototype.toString = function() {
@@ -70,6 +69,8 @@ Tile.prototype.getImage = function(){
 }
 
 /*
+    @param basetile The tile from which to extend the map. Should at least have a valid id
+    @param level Currently not used
     @param initial Should only be set to true for first tile on load
 */
 function getPartialMapFromServer(basetile, level, initial)
@@ -94,6 +95,12 @@ function getPartialMapFromServer(basetile, level, initial)
     xmlhttp.send();
 }
 
+/*
+    @param xmlhttp The XML HTTP object
+    @param basetile The tile from which to extend the map. Should at least have a valid id
+    @param level Currently not used
+    @param initial Should only be set to true for first tile on load
+*/
 function ajax_ExtendPartialMapFromJson_Callback(xmlhttp, basetile, level, initial)
 {
     console.log("AJAX response: " + xmlhttp.responseText);
@@ -341,7 +348,7 @@ Player.prototype.go = function(to) {
             this.currentPosition = this.currentPosition.north;
 
             // Now we need to get all surrounding tiles of current tile
-            getPartialMapFromServer(this.currentPosition, 2, false);
+            getPartialMapFromServer(this.currentPosition, 1, false);
         }
     }
     else if (to == 'east') {
@@ -350,7 +357,7 @@ Player.prototype.go = function(to) {
             this.currentPosition = this.currentPosition.east;
 
             // Now we need to get all surrounding tiles of current tile
-            getPartialMapFromServer(this.currentPosition, 2, false);
+            getPartialMapFromServer(this.currentPosition, 1, false);
         }
     }
     else if (to == 'south') {
@@ -359,7 +366,7 @@ Player.prototype.go = function(to) {
             this.currentPosition = this.currentPosition.south;
 
             // Now we need to get all surrounding tiles of current tile
-            getPartialMapFromServer(this.currentPosition, 2, false);
+            getPartialMapFromServer(this.currentPosition, 1, false);
         }
     }
     else if (to == 'west') {
@@ -368,7 +375,7 @@ Player.prototype.go = function(to) {
             this.currentPosition = this.currentPosition.west;
 
             // Now we need to get all surrounding tiles of current tile
-            getPartialMapFromServer(this.currentPosition, 2, false);
+            getPartialMapFromServer(this.currentPosition, 1, false);
         }
     }
 
@@ -393,11 +400,8 @@ Player.prototype.go = function(to) {
         //place new image in tileimage
         document.getElementById("tileimage").appendChild(DOM_img);
 
-        return "You traveled " + to
-;
+        return "You traveled " + to;
     }
-
-
 }
 
 
@@ -409,9 +413,9 @@ function Monster(id, description, location_id, monster_image)
     this.id = id;
     this.description = description;
     this.location_id = location_id;
+
     // Reference to location
     this.location = null,
-     
     this.monster_image = monster_image;
 }
 

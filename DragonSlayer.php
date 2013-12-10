@@ -19,7 +19,8 @@ function toGameOutput(message)
 {
     // Create new element node
     var newNode = document.createElement("p");
-    newNode.setAttribute("class", "boxedshadow");
+    // newNode.setAttribute("class", "boxedshadow");
+    newNode.setAttribute("class", "outputstyle")
     newNode.innerHTML = message;
 
     //Add element to dynamic content node
@@ -74,20 +75,13 @@ window.addEventListener("load", registerEvents, false);
 
             </div>
 
-
             <div id="interaction">
-
-
-
                 <div id="gameinput">
-                    <textarea id="txtUserAction" placeholder="... Your action (press enter to execute) ..."></textarea>
-                </div>             
+                    <textarea id="txtUserAction" placeholder="Enter your action here"></textarea>
+                </div>
 
                 <div id="gameoutput">
                 </div>
-
-                
-
             </div>
         </div>
     </body>
