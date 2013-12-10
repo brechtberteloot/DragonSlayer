@@ -6,7 +6,7 @@ include("Database.php");
 
 function getPartialMapInfo($tile_id, $level)
 {
-    $select = "SELECT id, description, tiles_id_north AS north_id, tiles_id_east AS east_id, tiles_id_south AS south_id, tiles_id_west AS west_id FROM tiles WHERE id=:id OR tiles_id_north=:id OR tiles_id_east=:id OR tiles_id_south=:id OR tiles_id_west=:id";
+    $select = "SELECT id, description, tiles_id_north AS north_id, tiles_id_east AS east_id, tiles_id_south AS south_id, tiles_id_west AS west_id, tile_image AS image FROM tiles WHERE id=:id OR tiles_id_north=:id OR tiles_id_east=:id OR tiles_id_south=:id OR tiles_id_west=:id";
     $pdostat = Database::getInstance()->prepare($select);
     $pdostat->execute(array(':id' => $tile_id));
 
@@ -27,7 +27,7 @@ function getPartialMapInfo($tile_id, $level)
         This prepares the statement with enough unnamed placeholders for every value
         in our $monster_ids array.
     */
-    $pdostat = Database::getInstance()->prepare("SELECT id, description, tiles_id AS location_id FROM monsters WHERE tiles_id IN ($place_holders)");
+    $pdostat = Database::getInstance()->prepare("SELECT id, description, tiles_id AS location_id, monster_image FROM monsters WHERE tiles_id IN ($place_holders)");
     $pdostat->execute($monster_ids);
 
     $monsters = array();
